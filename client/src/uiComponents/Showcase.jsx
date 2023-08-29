@@ -26,7 +26,7 @@ const Showcase = () => {
             opacity: ".4",
         }}>Cover</div>
         <div style={{zIndex: 2, display: "flex", flexDirection: "column", gap: "20px", alignItems: "center"}}>
-            <Typography fontSize={"26px"} color={"white"} fontWeight={400}>Get 20% off if you buy within the next 24 hours</Typography>
+            <Typography color={"white"} sx={{fontSize: { xs: '1.2rem', md: '1.5rem', lg: '1.8rem' }}}>Get 20% off if you buy within the next 24 hours</Typography>
             <Button variant='contained' sx={{
                 color: "white",
                 background: "black",    
