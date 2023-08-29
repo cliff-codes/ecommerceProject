@@ -1,8 +1,11 @@
 import React from 'react'
+import Showcase from '../src/uiComponents/Showcase'
 
 const Home = () => {
   return (
-    <div style={{flexGrow: 1}}>Home</div>
+    <div style={{flexGrow: 1}}>
+        <Showcase/>
+    </div>
   )
 }
 
