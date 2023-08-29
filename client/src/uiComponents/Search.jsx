@@ -3,7 +3,7 @@ import React from 'react'
 const Search = () => {
   return (
     <div style={{
-        width: "300px",
+        width: "100%",
         height: "40px",
         border: "1px solid #353535",
         padding: 0,
