@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react'
 import { apiData, apiErrorState, apiLoadingState, fetchFeaturedProducts } from './featuredProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
-import { Container, Grid, Box } from '@mui/material'
+import { Container, Grid } from '@mui/material'
 import ItemCard from '../../uiComponents/ItemCard'
 import SkeletonLoader from '../../uiComponents/SkeletonLoader'
-
+import Error from '../../uiComponents/Error'
 
 const FeaturedProductsList = () => {
     const dispatch = useDispatch()
@@ -18,7 +18,7 @@ const FeaturedProductsList = () => {
 
   return (
     <Container sx={{minHeight: "250px"}}>
-        <Grid container spacing={2} gap={"8px"}>
+        <Grid container justifyContent={"center"} spacing={2} gap={"16px"}>
             {
                 loadingState ? <> 
                     <SkeletonLoader/>
@@ -29,7 +29,7 @@ const FeaturedProductsList = () => {
                     data ? data.map(item => (
                         <ItemCard item={item}/>
                     ))
-                    : null
+                    : <Error/>
             }
         </Grid>
     </Container>
