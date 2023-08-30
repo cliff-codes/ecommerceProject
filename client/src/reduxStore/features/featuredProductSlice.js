@@ -34,7 +34,7 @@ const featuredProductSlice = createSlice({
                 state.loading = false,
                 state.data = action.payload
             })
-            .addCase(fetchFeaturedProducts.rejected, (state) => {
+            .addCase(fetchFeaturedProducts.rejected, (state,action) => {
                 state.loading = false,
                 state.error = action.error.message
             })

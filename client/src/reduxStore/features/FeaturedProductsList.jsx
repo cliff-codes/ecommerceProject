@@ -27,7 +27,7 @@ const FeaturedProductsList = () => {
                     <SkeletonLoader/>
                 </> : 
                     data ? data.map(item => (
-                        <ItemCard item={item}/>
+                        <ItemCard key={item.id} item={item}/>
                     ))
                     : <Error/>
             }

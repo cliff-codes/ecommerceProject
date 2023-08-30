@@ -12,9 +12,11 @@ export const fetchItem = createAsyncThunk("item/fetchItem", async(paramsObj) => 
     const url = `https://fakestoreapi.com/products/${id}`
     try {
         const response = await axios.get(url)
-        return response
+        const data = response.data
+        console.log(data)
+        return data
     } catch (error) {
-        
+        return Promise.reject(error.response.data)
     }
 })
 
@@ -30,9 +32,12 @@ const singleProductSlice = createSlice({
                 })
                 .addCase(fetchItem.fulfilled, (state,action) => {
                     state.error = null
+                    state.loading = false
                     state.item = action.payload
                 })
                 .addCase(fetchItem.rejected, (state,action) => {
+                    state.item = null
+                    state.loading = false
                     state.error = action.error.message
                 })
     }
