@@ -4,6 +4,7 @@ import Home from '../pages/Home'
 import Nav from './uiComponents/Nav'
 import Footer from './uiComponents/Footer'
 import ErrorPage from '../pages/ErrorPage'
+import ProductDetailsPage from '../pages/ProductDetailsPage'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route index element = {<Home/>} />
           <Route path='*' element = {<ErrorPage/>}/>
+          <Route path='/:id' element = {<ProductDetailsPage/>}/>
         </Routes>
       </Router>
         <Footer/>
