@@ -11,10 +11,12 @@ const initialState = {
 
 export const fetchFeaturedProducts = createAsyncThunk('products/fetchFeaturedProducts', async() => {
     try {
-        const response = await axios.get("https://fakestoreapi.com/products?limit=6")
-        console.log(response)
+        const response = await axios.get("https://fakestoreapi.com/products?limit=5")
+        const data = await response.data
+        console.log(data)
+        return data
     } catch (error) {
-        
+        return error
     }
 })
 
@@ -39,7 +41,7 @@ const featuredProductSlice = createSlice({
     }
 })
 
-const apiData = (state) => state.featuredProducts.data
-const apiLoadingState = (state) => state.featuredProducts.loading
-const apiErrorState = (state) => state.featuredProducts.error
+export const apiData = (state) => state.featuredProducts.data
+export const apiLoadingState = (state) => state.featuredProducts.loading
+export const apiErrorState = (state) => state.featuredProducts.error
 export default featuredProductSlice.reducer
