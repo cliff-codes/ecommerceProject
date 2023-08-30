@@ -4,7 +4,8 @@ import { useParams } from 'react-router-dom'
 import { fetchItem, item, singleProductError, singleProductLoading } from '../src/reduxStore/features/singleProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
 import SingleProductSkeletonLoader from '../src/uiComponents/SingleProductSkeletonLoader'
-import InterestedProductsSkeleton from '../src/uiComponents/InterestedProductsSkeleton'
+import SingleProductDetails from '../src/reduxStore/features/SingleProductDetails'
+import InterestedProductsSection from '../src/uiComponents/InterestedProductsSection'
 
 
 const ProductDetailsPage = () => {
@@ -26,10 +27,9 @@ const ProductDetailsPage = () => {
             <Container>
                 <SingleProductSkeletonLoader/>
             </Container>
-            <Container>
-                <InterestedProductsSkeleton/>
-            </Container></> 
-        :   errorState ?<Box>Please reload page</Box> : null 
+            </> 
+        :   errorState ?<Box>Please reload page</Box> 
+        :   productItem ? <Box><SingleProductDetails item={productItem}/><InterestedProductsSection/></Box> : null 
     }
     </Box>
   )

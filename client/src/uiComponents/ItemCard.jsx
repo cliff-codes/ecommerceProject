@@ -16,7 +16,6 @@ const ItemCard = ({item}) => {
             height: "280px",
             width: "200px",
             border: "none",
-            // boxShadow: "none",
             display:" flex",
             flexDirection: "column",
             justifyContent: "space-between",
@@ -28,12 +27,13 @@ const ItemCard = ({item}) => {
             }
         }}>
            <Box display={"flex"} flexGrow={1} alignItems={"center"} justifyContent={"center"} sx={{ maxWidth: "150px", maxHeight: "150px"}}>
-                <img width={"120px"} height={"auto"} src={`${image}`}/>
-                
+                <Link to={`/${id}`}>
+                    <img width={"120px"} height={"auto"} src={`${image}`}/>
+                </Link>
            </Box>
 
            <Box>
-                <Link to = {`/${id}`}>
+                <Link style={{color: "inherit", textDecoration: "none"}} to = {`/${id}`}>
                     <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"} padding={"2px"}>
                         <Typography fontWeight={"600"} sx={{fontSize: {xs: "16px"} }} align='left'>{`${formatedText(title,14)}`}</Typography>
                         <Typography fontWeight={"600"} align='right'>{`$${price}`}</Typography>
@@ -41,6 +41,7 @@ const ItemCard = ({item}) => {
                 <Typography textAlign={"left"}>{formatedText(description,18)}</Typography>
                 </Link>
                 <Box display={"flex"} margin = {"10px 0"} justifyContent={"flex-end"}>
+                    
                     <Button variant='outlined' sx={{textTransform: "lowercase", color: "black", border: "1px solid black",outline: "none" ,"&:hover" : {color: "white", background: "black", outline: "none"}}}>Add to Cart</Button>
                 </Box>
            </Box>

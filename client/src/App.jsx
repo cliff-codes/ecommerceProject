@@ -13,9 +13,9 @@ function App() {
         <Nav/>
       <Router>
         <Routes>
-          <Route index element = {<Home/>} />
-          <Route path='*' element = {<ErrorPage/>}/>
-          <Route path='/:id' element = {<ProductDetailsPage/>}/>
+          <Route path='/' index element={<Home />} />
+          <Route path='/:id' element={<ProductDetailsPage />} />
+          <Route path='*' element={<ErrorPage />} />
         </Routes>
       </Router>
         <Footer/>
