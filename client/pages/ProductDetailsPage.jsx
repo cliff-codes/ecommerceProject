@@ -1,5 +1,5 @@
 import { Box, Container } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchItem, item, singleProductError, singleProductLoading } from '../src/reduxStore/features/singleProductSlice'
 import { useDispatch, useSelector } from 'react-redux'
@@ -16,18 +16,17 @@ const ProductDetailsPage = () => {
     const errorState = useSelector(singleProductError)
     const loadingState = useSelector(singleProductLoading)
 
+
     useEffect(() => {
         dispatch(fetchItem({id}))
-    },[dispatch])
+    },[dispatch,id])
 
   return (
     <Box flexGrow={1}>
         {loadingState ? 
-            <><Box>Product Details page</Box>
             <Container>
                 <SingleProductSkeletonLoader/>
             </Container>
-            </> 
         :   errorState ?<Box>Please reload page</Box> 
         :   productItem ? <Box><SingleProductDetails item={productItem}/><InterestedProductsSection/></Box> : null 
     }

@@ -22,7 +22,7 @@ const InterestedProductsSection = () => {
             {
                isLoading ? <InterestedProductsSkeleton/> :
                interestedProducts ? interestedProducts.map(item => (
-                <ItemCard key={item.id} item={item}/>
+                    <ItemCard key={item.id} item={item}/>
                 )):
                 isError ? <h3>Reload page to load products :( </h3> : null
             }

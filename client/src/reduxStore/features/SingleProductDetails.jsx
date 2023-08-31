@@ -48,7 +48,6 @@ const SingleProductDetails = ({item}) => {
                             "&:hover": {
                                 background: "black",
                                 color: "white",
-                                border: "none"
                             }}}>Add to cart</Button>
                     </Box>
 
