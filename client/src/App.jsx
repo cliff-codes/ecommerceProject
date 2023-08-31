@@ -6,6 +6,7 @@ import Nav from './uiComponents/Nav'
 import Footer from './uiComponents/Footer'
 import ErrorPage from '../pages/ErrorPage'
 import ProductDetailsPage from '../pages/ProductDetailsPage'
+import CartPage from '../pages/CartPage'
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path='/' index element={<Home/>} />
           <Route path='/:id' element={<ProductDetailsPage/>} />
+          <Route path='/cart' element = {<CartPage/>}/>
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
         <Footer/>
