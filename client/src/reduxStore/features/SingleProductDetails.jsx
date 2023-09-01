@@ -1,14 +1,26 @@
 import { Box, Button, Card, Container, Grid, Typography } from '@mui/material'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { itemsInCart } from './cartSlice'
+import { itemsInCart, quantityInCart, addToCart, increaseQuantity, decreaseQuantity } from './cartSlice'
 
 
 const SingleProductDetails = ({item}) => {
+    const dispatch = useDispatch()
     const {image, price, title, description, id} = item
 
+    //dealing in the cart.
     const items = useSelector(itemsInCart)
+    const [counter,setCounter] = useState(0)
 
+    const increaseCounter = () => {
+        setCounter(counter + 1)
+    }
+
+    const decreaseCounter = () => {
+        if(counter > 0){
+            setCounter(counter - 1)
+        }
+    }
 
   return (
     <Container sx={{marginTop: "32px"}}>
@@ -35,8 +47,8 @@ const SingleProductDetails = ({item}) => {
                                 color: "white",
                                 border: "none"
                             }
-                        }}>-</Button>
-                        <Box>0</Box>
+                        }} onClick={decreaseCounter}>-</Button>
+                        <Box>{counter}</Box>
                         <Button variant='outlined' sx={{
                             border: "1px solid black",
                             color: "black",
@@ -47,7 +59,7 @@ const SingleProductDetails = ({item}) => {
                                 color: "white",
                                 border: "none"
                             }
-                        }}>+</Button>
+                        }} onClick={() => {increaseCounter()}}>+</Button>
                     </Box>
                     
                     <Box display={"flex"} paddingTop={"16px"} paddingBottom={"16px"}  justifyContent={"center"}>
@@ -55,7 +67,12 @@ const SingleProductDetails = ({item}) => {
                             "&:hover": {
                                 background: "black",
                                 color: "white",
-                            }}}>Add to cart</Button>
+                            }}} onClick={() => {
+                                if(counter > 0){
+                                    console.log("added to cart")
+                                    dispatch(addToCart(id,title,price,counter,image))
+                                }
+                            }}>Add to cart</Button>
                     </Box>
 
                 </Box>

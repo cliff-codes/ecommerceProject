@@ -8,6 +8,7 @@ import SingleProductDetails from '../src/reduxStore/features/SingleProductDetail
 import InterestedProductsSection from '../src/uiComponents/InterestedProductsSection'
 
 
+
 const ProductDetailsPage = () => {
     const dispatch = useDispatch()
     const {id} = useParams()
