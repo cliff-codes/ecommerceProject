@@ -34,13 +34,10 @@ const cartSlice = createSlice({
                 }
             }
         }
-    },
-    extraReducers: () => {
-
     }
 })
 
-export const quantityInCart = (state) => state.cartItems.quantity
+// export const quantityInCart = (state) => state.cartItems.quantity
 export const itemsInCart = (state) => state.cartItems.cartItems
 export const loading = (state) => state.cartItems.isLoading
 export const errorMessage = (state) => state.cartItems.errorMsg

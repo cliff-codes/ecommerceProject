@@ -1,8 +1,15 @@
 import { Box, Button, Card, Container, Grid, Typography } from '@mui/material'
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { itemsInCart } from './cartSlice'
+
 
 const SingleProductDetails = ({item}) => {
-    const {image, price, title, description} = item
+    const {image, price, title, description, id} = item
+
+    const items = useSelector(itemsInCart)
+
+
   return (
     <Container sx={{marginTop: "32px"}}>
         <Grid container justifyContent={"center"} spacing={3}>
