@@ -16,7 +16,7 @@ export const fetchFeaturedProducts = createAsyncThunk('products/fetchFeaturedPro
         console.log(data)
         return data
     } catch (error) {
-        return error
+        return Promise.reject(error.response.data)
     }
 })
 
