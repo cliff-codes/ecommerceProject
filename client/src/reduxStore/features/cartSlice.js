@@ -22,15 +22,18 @@ const cartSlice = createSlice({
         addToCart: {
             reducer(state,action){
                state.items.push(action.payload)
+               console.log(action.payload)
             },
             prepare(id,title,price,quantity,image){
                 return {
-                    id,
-                    cartId: nanoid(4),
-                    title,
-                    price,
-                    quantity,
-                    image
+                    payload: {
+                        id,
+                        cartId: nanoid(4),
+                        title,
+                        price,
+                        quantity,
+                        image
+                    }
                 }
             }
         }

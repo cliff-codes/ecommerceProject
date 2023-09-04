@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material'
 import React from 'react'
 import { itemsInCart } from '../src/reduxStore/features/cartSlice'
 import { useDispatch, useSelector } from 'react-redux'
+import CartItemsList from '../src/reduxStore/features/CartItemsList'
 
 
 const CartPage = () => {
@@ -11,7 +12,14 @@ const CartPage = () => {
     <Box flexGrow={1}>
         <Typography>Your Cart</Typography>
         <Box>
-          <Typography>{cartItems.length}</Typography>
+          {
+            cartItems.length < 1 ? <Typography>your cart is empty :(</Typography>:
+            <Box>
+              {cartItems.map(item => (
+                console.log(item)
+              ))}
+            </Box>
+          }
           
         </Box>
     </Box>

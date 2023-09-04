@@ -8,8 +8,7 @@ const SingleProductDetails = ({item}) => {
     const dispatch = useDispatch()
     const {image, price, title, description, id} = item
 
-    //dealing in the cart.
-    const items = useSelector(itemsInCart)
+    
     const [counter,setCounter] = useState(0)
 
     const increaseCounter = () => {
