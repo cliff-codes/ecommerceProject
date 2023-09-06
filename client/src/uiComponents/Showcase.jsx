@@ -2,6 +2,7 @@ import React from 'react'
 import men from "../assets/men.jpg"
 import showcaseImg from "../assets/showcaseImg.jpg"
 import { Button, Typography } from '@mui/material'
+import {Link} from "react-router-dom"
 
 const Showcase = () => {
   return (
@@ -35,7 +36,9 @@ const Showcase = () => {
                     background: "white",
                     color: "black"
                 }
-            }}>Shop Now</Button>
+            }}>
+                <Link to={'/shoppingPage'} style={{color: "inherit", textDecoration: "none"}}>Shop Now</Link>
+            </Button>
         </div>
     </div>
   )

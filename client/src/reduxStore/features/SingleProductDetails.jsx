@@ -1,7 +1,7 @@
 import { Box, Button, Card, Container, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { itemsInCart, quantityInCart, addToCart, increaseQuantity, decreaseQuantity } from './cartSlice'
+import { itemsInCart, addToCart} from './cartSlice'
 
 
 const SingleProductDetails = ({item}) => {

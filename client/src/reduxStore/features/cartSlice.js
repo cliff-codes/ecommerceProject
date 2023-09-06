@@ -2,7 +2,6 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
     items: [],
-    quantity: 0,
     isLoading: false,
     errorMsg: null
 }
@@ -11,21 +10,39 @@ const cartSlice = createSlice({
     name: "cartItems",
     initialState,
     reducers: {
-        increaseQuantity: (state) => {
-            state.quantity += 1
-        },
-        decreaseQuantity: (state) => {
-            if (state.quantity > 0){
-                state.quantity -= 1
-            }
-        },
         clearCart: (state) => {
             state.items = []
+        },
+        increaseQunatity: (id,state) => {
+            const item = state.items.filter(item => item.cartId === id ? item : null)
+            if(item){
+                item.quantity += 1
+            }
+        }
+        ,
+        findItemAndIncrease: (state, action) => {
+            const idToFind = action.payload; // Assuming action.payload is the ID to find
+            console.log(idToFind)
+            const item = state.items.find(el => el.cartId === idToFind);
+            console.log(item)
+            if (item) {
+                // If item exists, you can update its properties
+                item.quantity += 1;
+            }
+        },
+        findItemAndDecrease: (state, action) => {
+            const idToFind = action.payload; // Assuming action.payload is the ID to find
+            console.log(idToFind)
+            const item = state.items.find(el => el.cartId === idToFind);
+            console.log(item)
+            if (item) {
+                // If item exists, you can update its properties
+                item.quantity -= 1;
+            }
         },
         addToCart: {
             reducer(state,action){
                state.items.push(action.payload)
-               console.log(action.payload)
             },
             prepare(id,title,price,quantity,image){
                 return {
@@ -44,12 +61,11 @@ const cartSlice = createSlice({
 })
 
 export default cartSlice.reducer
-export const {addToCart, increaseQuantity, decreaseQuantity,clearCart} = cartSlice.actions
-
-export const quantityInCart = (state) => state.cart.quantity
+export const {addToCart,clearCart,increaseQunatity, findItemAndIncrease, findItemAndDecrease} = cartSlice.actions
 export const itemsInCart = (state) => state.cart.items
 export const loading = (state) => state.cart.isLoading
 export const errorMessage = (state) => state.cart.errorMsg
+
 
 
 //export const item = (state) => state.singleProduct.item
