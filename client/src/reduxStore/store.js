@@ -14,7 +14,6 @@ const persistConfig = {
     storage, 
     // blacklist: ['featuredProducts', 'singleProduct' , 'interestedProducts',api.reducerPath]
     whitelist: ['cart']
-    
 }
 
 const rootReducer = combineReducers({
