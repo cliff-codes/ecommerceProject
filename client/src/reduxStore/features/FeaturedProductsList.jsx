@@ -18,7 +18,7 @@ const FeaturedProductsList = () => {
 
   return (
     <Container sx={{minHeight: "250px"}}>
-        <Grid container justifyContent={"center"} spacing={2} gap={"16px"}>
+        <Grid container justifyContent={"center"} spacing={2} gap={"16px"} >
             {
                 loadingState ? <> 
                     <SkeletonLoader/>

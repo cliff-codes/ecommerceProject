@@ -11,9 +11,8 @@ const initialState = {
 
 export const fetchFeaturedProducts = createAsyncThunk('products/fetchFeaturedProducts', async() => {
     try {
-        const response = await axios.get("https://fakestoreapi.com/products?limit=4")
+        const response = await axios.get("https://fakestoreapi.com/products?limit=6")
         const data = await response.data
-        console.log(data)
         return data
     } catch (error) {
         return Promise.reject(error.response.data)
