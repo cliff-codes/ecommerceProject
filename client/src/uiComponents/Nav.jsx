@@ -16,7 +16,7 @@ const Nav = () => {
     }}>
         <Container sx={{display: "flex", justifyContent: "center"}}>
            <Grid container spacing={2} display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-            <Grid item xs = {2}  sm = {3} md = {3} lg = {3} display={"flex"} justifyContent={"center"} alignItems={"center"}>
+            <Grid item xs = {2}  sm = {3} md = {2} lg = {2} display={"flex"} justifyContent={"center"} alignItems={"center"}>
                         <Box>
                             <Logo/>
                         </Box>

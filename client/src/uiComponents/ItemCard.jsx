@@ -24,7 +24,7 @@ const ItemCard = ({item}) => {
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "8px 0",
+                padding: "10px",
                 transition: "all .1s ease",
                 marginBottom: "8px",
                 "&:hover": {
