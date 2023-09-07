@@ -26,7 +26,7 @@ const SingleProductDetails = ({item}) => {
         <Grid container justifyContent={"center"} spacing={3}>
             <Grid item>
                 <Card sx={{height: "200px", width: "250px", boxShadow: "none"}}>
-                    <img height={"100%"} width={"auto"} src= {`${image}`} />
+                    <img height={"auto"} width={"100%"} src= {`${image}`} />
                 </Card>
             </Grid>
             <Grid item>

@@ -6,15 +6,10 @@ import ItemCard from '../src/uiComponents/ItemCard'
 
 
 const ShopNowPage = () => {
+    const {data:jdata, error:jError, isLoading: jLoader} = useFetchProductsQuery("jewelery")
     const {data, error, isLoading} = useFetchProductsQuery("electronics")
-    const {data:jdata, error:jError, isLoading: jLoader} = useFetchProductsQuery("jewellery")
-
-    if(jLoader){
-        console.log(`jloader is loading items`)
-    }
 
     if(isLoading){
-        console.log("loading...")
         return(
             <Box flexGrow={1}>
                     <Container>
@@ -47,12 +42,11 @@ const ShopNowPage = () => {
     }
 
     if(data){
-        console.log(data)
         return (
-            <Box flexGrow={1} display={"flex"} justifyContent={"center"} marginBottom={"32px"}>
-                <Container maxWidth = "md">
+            <Box flexGrow={1} display={"flex"} flexDirection={"column"} justifyContent={"center"} marginBottom={"32px"}>
+                <Container maxWidth = "md" sx={{marginBottom: "64px"}}>
                     <Typography align='left' marginY={"16px"} fontWeight={600}>Electronics</Typography>
-                    <Grid container spacing={3}>
+                    <Grid container spacing={2}>
                         {
                             data.map(item => (
                                 <ItemCard key={item.id} item={item}/>
@@ -60,6 +54,36 @@ const ShopNowPage = () => {
                         }
                     </Grid>
                 </Container>
+
+                {   jLoader ? <Box >
+                    <Container>
+                        <InterestedProductsSkeleton/>
+                    </Container>
+
+                    <Container>
+                        <InterestedProductsSkeleton/>
+                    </Container>
+
+                    <Container>
+                        <InterestedProductsSkeleton/>
+                    </Container>
+
+                    <Container>
+                        <InterestedProductsSkeleton/>
+                    </Container>
+                </Box>:
+                    jdata ? <Container maxWidth = "md">
+                    <Typography align='left' marginY={"16px"} fontWeight={600}>Jewellery</Typography>
+                    <Grid container spacing={2}>
+                        {
+                            jdata.map(item => (
+                                <ItemCard key={item.id} item={item}/>
+                            ))
+                        }
+                    </Grid>
+                </Container>: 
+                    null
+                }
             </Box>
       )
     }

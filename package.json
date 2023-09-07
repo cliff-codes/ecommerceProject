@@ -2,5 +2,8 @@
   "dependencies": {
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.2"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Card, Grid, Typography, colors } from '@mui/material'
+import { Box, Button, Card, Grid, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const ItemCard = ({item}) => {
@@ -15,7 +15,8 @@ const ItemCard = ({item}) => {
         <Link style={{color: "inherit", textDecoration: "none"}} to={`/${id}`}>
             <Card sx={{
                 height: "280px",
-                width: "200px",
+                maxWidth: "200px",
+                width: "100%",
                 border: "none",
                 display:" flex",
                 flexDirection: "column",
@@ -48,5 +49,4 @@ const ItemCard = ({item}) => {
     </Grid>
   )
 }
-
 export default ItemCard
