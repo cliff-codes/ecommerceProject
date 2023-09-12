@@ -21,6 +21,32 @@ const SingleProductDetails = ({item}) => {
         }
     }
 
+    //checking if the item is already in cart
+    const [addedToCart, setAddedToCart] = useState(false)
+    const cartItems = useSelector(itemsInCart)
+    const cartItem = cartItems.filter(el => el.id === item.id ? el : null)
+    
+    const cartBtn = () => {
+        console.log(cartItem)
+        if(cartItem.length > 0){
+            return <>
+                <Button>Added to Cart</Button>
+            </>
+        }
+        return <>
+             <Button sx={{textTransform: "lowercase", color: "black", border: "1px solid black", transition: "all .1s ease",
+                                "&:hover": {
+                                    background: "black",
+                                    color: "white",
+                                }}} onClick={() => {
+                                    if(counter > 0){
+                                        dispatch(addToCart(id,title,price,counter,image))
+                                         setAddedToCart(true)
+                                    }
+            }}>Add to cart</Button>
+        </>
+    }
+
   return (
     <Container sx={{marginTop: "32px"}}>
         <Grid container justifyContent={"center"} spacing={3}>
@@ -62,16 +88,9 @@ const SingleProductDetails = ({item}) => {
                     </Box>
                     
                     <Box display={"flex"} paddingTop={"16px"} paddingBottom={"16px"}  justifyContent={"center"}>
-                        <Button sx={{textTransform: "lowercase", color: "black", border: "1px solid black", transition: "all .1s ease",
-                            "&:hover": {
-                                background: "black",
-                                color: "white",
-                            }}} onClick={() => {
-                                if(counter > 0){
-                                    console.log("added to cart")
-                                    dispatch(addToCart(id,title,price,counter,image))
-                                }
-                            }}>Add to cart</Button>
+                            {
+                                cartBtn()
+                            }
                     </Box>
 
                 </Box>

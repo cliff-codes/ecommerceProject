@@ -1,3 +1,4 @@
+import { Button } from '@mui/material'
 import React from 'react'
 
 const Search = () => {
@@ -18,14 +19,15 @@ const Search = () => {
             outline: "none",
             padding: "0 2px 0 2px",
         }}/>
-        <button style={{
+        <Button style={{
             width: "80px",
             border: "none",
             borderRadius: "5px",
             fontFamily: "inherit",
             fontWeight: 600,
-            color: "#353535",
-        }}>Search</button>
+            background: "#353535",
+            color: "white"
+        }}>Search</Button>
     </div>
   )
 }
