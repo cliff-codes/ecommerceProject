@@ -12,7 +12,7 @@ const ItemCard = ({item}) => {
         return name
     }
   return (
-    <Grid item justifyContent={"center"} key={id} xs = {5.5} sm = {4} md = {3} >
+    <Grid item justifyContent={"center"} key={id} xs = {5.5} sm = {4} md = {3} m={"8px"}>
         <Link style={{color: "inherit", textDecoration: "none"}} to={`/${id}`}>
             <Card  sx={{
                 maxHeight: "280px",

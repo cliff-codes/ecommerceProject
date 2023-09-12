@@ -1,4 +1,4 @@
-import { Box, Button, Card, Container, Grid, Typography } from '@mui/material'
+import { Box, Button, ButtonBase, Card, Container, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { itemsInCart, addToCart} from './cartSlice'
@@ -27,10 +27,9 @@ const SingleProductDetails = ({item}) => {
     const cartItem = cartItems.filter(el => el.id === item.id ? el : null)
     
     const cartBtn = () => {
-        console.log(cartItem)
         if(cartItem.length > 0){
             return <>
-                <Button>Added to Cart</Button>
+                <ButtonBase sx={{font: "inherit", background: "#D3D3D3",p:"8px",color:"white", borderRadius:"5px"}}>Added to cart</ButtonBase>
             </>
         }
         return <>
