@@ -1,7 +1,9 @@
 import { Box, Container, Typography, Button } from '@mui/material'
+import DeleteIcon from '@mui/icons-material/Delete';
 import React, { useState } from 'react'
-import {findItemAndDecrease, findItemAndIncrease} from "./cartSlice"
+import {findItemAndDecrease, findItemAndIncrease, deleteItem} from "./cartSlice"
 import { useDispatch } from 'react-redux'
+
 
 
 const CartItemsList = ({item}) => {
@@ -63,6 +65,9 @@ const CartItemsList = ({item}) => {
                                     dispatch(findItemAndIncrease(item.cartId))
                                   }} >+</Button>
                             </Box>
+                    </Box>
+                    <Box>
+                        <DeleteIcon onClick = {() => dispatch(deleteItem(item.cartId))}/>
                     </Box>
                </Box>
         </Container>

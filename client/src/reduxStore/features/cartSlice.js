@@ -20,11 +20,12 @@ const cartSlice = createSlice({
             }
         }
         ,
+        // findItem: (state,action) => {
+            
+        // },
         findItemAndIncrease: (state, action) => {
             const idToFind = action.payload; // Assuming action.payload is the ID to find
-            console.log(idToFind)
             const item = state.items.find(el => el.cartId === idToFind);
-            console.log(item)
             if (item) {
                 // If item exists, you can update its properties
                 item.quantity += 1;
@@ -32,13 +33,15 @@ const cartSlice = createSlice({
         },
         findItemAndDecrease: (state, action) => {
             const idToFind = action.payload; // Assuming action.payload is the ID to find
-            console.log(idToFind)
-            const item = state.items.find(el => el.cartId === idToFind);
-            console.log(item)
+            const item = state.items.find(el => el.cartId === idToFind)
             if (item) {
                 // If item exists, you can update its properties
                 item.quantity -= 1;
             }
+        },
+        deleteItem: (state, action) => {
+            const idToFind = action.payload; 
+            state.items = state.items.filter(el => el.cartId !== idToFind ? el : null);
         },
         addToCart: {
             reducer(state,action){
@@ -61,7 +64,7 @@ const cartSlice = createSlice({
 })
 
 export default cartSlice.reducer
-export const {addToCart,clearCart,increaseQunatity, findItemAndIncrease, findItemAndDecrease} = cartSlice.actions
+export const {addToCart,clearCart,increaseQunatity, findItemAndIncrease, findItemAndDecrease, deleteItem} = cartSlice.actions
 export const itemsInCart = (state) => state.cart.items
 export const loading = (state) => state.cart.isLoading
 export const errorMessage = (state) => state.cart.errorMsg

@@ -22,7 +22,6 @@ const SingleProductDetails = ({item}) => {
     }
 
     //checking if the item is already in cart
-    const [addedToCart, setAddedToCart] = useState(false)
     const cartItems = useSelector(itemsInCart)
     const cartItem = cartItems.filter(el => el.id === item.id ? el : null)
     
@@ -44,6 +43,13 @@ const SingleProductDetails = ({item}) => {
                                     }
             }}>Add to cart</Button>
         </>
+    }
+
+    //specifying which counter value to show
+    const counterValue = () => {
+        if(cartItem.length > 0){
+            
+        }
     }
 
   return (

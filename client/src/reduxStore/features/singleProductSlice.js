@@ -13,7 +13,6 @@ export const fetchItem = createAsyncThunk("item/fetchItem", async(paramsObj) => 
     try {
         const response = await axios.get(url)
         const data = response.data
-        console.log(data)
         return data
     } catch (error) {
         return Promise.reject(error.response.data)
