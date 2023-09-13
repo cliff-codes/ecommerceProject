@@ -8,6 +8,7 @@ import ErrorPage from '../pages/ErrorPage'
 import ProductDetailsPage from '../pages/ProductDetailsPage'
 import CartPage from '../pages/CartPage'
 import ShopNowPage from '../pages/ShopNowPage'
+import CategoryPage from '../pages/CategoryPage'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
           <Route path='/:id' element={<ProductDetailsPage/>} />
           <Route path='/cart' element = {<CartPage/>}/>
           <Route path='/shoppingPage' element = {<ShopNowPage/>}/>
+          <Route path='/category/:categoryType' element = {<CategoryPage/>}/>
           <Route path='*' element={<ErrorPage/>} />
         </Routes>
         <Footer/>
