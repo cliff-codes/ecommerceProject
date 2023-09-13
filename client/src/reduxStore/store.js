@@ -4,6 +4,8 @@ import singleProductReducer from "./features/singleProductSlice"
 import interestedProductsReducer from "./features/interestedProductsSlice"
 import cartReducer from "./features/cartSlice"
 import { api } from "./features/shopNowSlice"
+import { categoryApi } from "./features/categorySlice"
+
 
 import storage from "redux-persist/es/storage"
 import {persistReducer, persistStore} from "redux-persist"
@@ -21,7 +23,8 @@ const rootReducer = combineReducers({
     singleProduct: singleProductReducer,
     interestedProducts: interestedProductsReducer,
     cart: cartReducer,
-    [api.reducerPath]: api.reducer
+    [api.reducerPath]: api.reducer,
+    [categoryApi.reducerPath]: categoryApi.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

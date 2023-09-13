@@ -13,7 +13,7 @@ const ProductsCategories = () => {
         <Grid container justifyContent={"center"} spacing={3}>
             <Grid item>
                 <Card sx={{height: "150px",width: "150px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",transition: "all .2s ease", "&:hover": {background: "black", color: "white"}}}>
-                    <Link to={'/category/men'}>
+                    <Link to={`/category/men's clothing`}>
                         <CardMedia sx={{height: "100px", width: "100px", borderRadius: "50%"}} image={MenImg}/>
                     </Link>
                     <Typography sx={{transition: "all .1s ease"}}>Men clothing</Typography>
@@ -22,7 +22,7 @@ const ProductsCategories = () => {
             <Grid item>
                 <Card>
                 <Card sx={{height: "150px",width: "150px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",transition: "all .2s ease", "&:hover": {background: "black", color: "white"}}}>
-                    <Link to={'/category/women'}>
+                    <Link to={`/category/women's clothing`}>
                     <CardMedia sx={{height: "100px", width: "100px", borderRadius: "50%"}} image={WomenImg}/>
                     </Link>
                     <Typography>Women clothing</Typography>
@@ -32,7 +32,7 @@ const ProductsCategories = () => {
             <Grid item>
                 <Card>
                 <Card sx={{height: "150px",width: "150px", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",transition: "all .2s ease", "&:hover": {background: "black", color: "white"}}}>
-                    <Link to={'/category/jewellery'}>
+                    <Link to={'/category/jewelery'}>
                     <CardMedia sx={{height: "100px", width: "100px", borderRadius: "50%"}} image={MenImg}/>
                     </Link>
                     <Typography>Jewellery</Typography>
