@@ -1,4 +1,4 @@
-import { Button, Input } from '@mui/material'
+import { Button, Input, Tooltip } from '@mui/material'
 import React from 'react'
 
 
@@ -23,15 +23,17 @@ const Search = () => {
             padding: "0 2px 0 2px",
           }}  
             />
-        <Button style={{
-            width: "80px",
-            border: "none",
-            borderRadius: "5px",
-            fontFamily: "inherit",
-            fontWeight: 600,
-            background: "#353535",
-            color: "white"
-        }}>Search</Button>
+        <Tooltip title='search feature under construction' arrow>
+          <Button style={{
+              width: "80px",
+              border: "none",
+              borderRadius: "5px",
+              fontFamily: "inherit",
+              fontWeight: 600,
+              background: "#353535",
+              color: "white"
+          }}>Search</Button>
+        </Tooltip>
     </div>
   )
 }
