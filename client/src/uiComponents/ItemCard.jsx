@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Button, Card, Grid, Typography } from '@mui/material'
+import { Box, Button, Card, CardMedia, Grid, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const ItemCard = ({item}) => {
@@ -12,31 +12,26 @@ const ItemCard = ({item}) => {
         return name
     }
   return (
-    <Grid item justifyContent={"center"} key={id} xs = {5.5} sm = {4} md = {3} m={"8px"}>
+    <Grid item justifyContent={"center"} alignItems={'center'} key={id} sm = {6} md = {4} spacing={2} overflow={'hidden'} boxSizing={'border-box'} padding={0} minHeight={"220px"} minWidth={"140px"} height={'auto'} width={'auto'}>
         <Link style={{color: "inherit", textDecoration: "none"}} to={`/${id}`}>
             <Card  sx={{
-                maxHeight: "280px",
-                height: "100%",
-                // maxWidth: "200px",
-                width: "100%",
+                height: "inherit",
+                width: "auto",
                 border: "none",
+                padding: "8px",
                 display:" flex",
                 flexDirection: "column",
                 justifyContent: "space-between",
                 alignItems: "center",
-                padding: "10px",
                 transition: "all .1s ease",
-                marginBottom: "8px",
                 "&:hover": {
                     transform: "scale(1.02)"
                 }
             }}>
-            <Box display={"flex"} flexGrow={1} alignItems={"center"} paddingBottom={"16px"} justifyContent={"center"} sx={{ maxWidth: "150px", maxHeight: "150px"}}>
-                        <img width={"120px"} height={"auto"} src={`${image}`}/>
-            </Box>
+                <CardMedia image={image} sx={{maxWidth: "180px", width: "100%", maxHeight: "140px", minHeight: "100px", height: "auto" , backgroundSize: "contain"}} />
 
             <Box>                
-                    <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"} padding={"2px"}>
+                    <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
                         <Typography paddingRight={"16px"} fontWeight={"600"} sx={{fontSize: {xs: "16px"} }} align='left'>{`${formatedText(title,11)}`}</Typography>
                         <Typography fontWeight={"600"} align='right'>{`$${price}`}</Typography>
                     </Box>
