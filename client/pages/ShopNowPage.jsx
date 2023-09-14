@@ -46,7 +46,7 @@ const ShopNowPage = () => {
             <Box flexGrow={1} display={"flex"} flexDirection={"column"} justifyContent={"center"} marginBottom={"32px"}>
                 <Container maxWidth = "md" sx={{marginBottom: "64px"}}>
                     <Typography align='left' marginY={"16px"} fontWeight={600}>Electronics</Typography>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={4}>
                         {
                             data.map(item => (
                                 <ItemCard key={item.id} item={item}/>
@@ -74,7 +74,7 @@ const ShopNowPage = () => {
                 </Box>:
                     jdata ? <Container maxWidth = "md">
                     <Typography align='left' marginY={"16px"} fontWeight={600}>Jewellery</Typography>
-                    <Grid container spacing={2}>
+                    <Grid container spacing={4}>
                         {
                             jdata.map(item => (
                                 <ItemCard key={item.id} item={item}/>

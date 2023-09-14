@@ -1,7 +1,9 @@
-import { Button } from '@mui/material'
+import { Button, Input } from '@mui/material'
 import React from 'react'
 
+
 const Search = () => {
+
   return (
     <div style={{
         width: "100%",
@@ -13,12 +15,14 @@ const Search = () => {
         borderRadius: "5px",
         fontWeight: "bold"
     }}>
-        <input style={{
+        <Input  
+          style={{
             width: "100%",
             border: "none", borderRadius: "5px",
             outline: "none",
             padding: "0 2px 0 2px",
-        }}/>
+          }}  
+            />
         <Button style={{
             width: "80px",
             border: "none",

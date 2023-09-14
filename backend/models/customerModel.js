@@ -19,6 +19,7 @@ const customerSchema = new mongoose.Schema({
         }
     ]
 })
+
 //sanitizing the customer info returned to the client.
 customerSchema.set('toJSON', {
     transform: (doc, ret) => {

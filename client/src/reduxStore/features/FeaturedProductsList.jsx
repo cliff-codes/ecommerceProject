@@ -17,8 +17,7 @@ const FeaturedProductsList = () => {
    },[dispatch])
 
   return (
-    <Container maxWidth = "md" sx={{minHeight: "250px"}}>
-        <Grid container justifyContent={"center"} spacing={3} gap={"16px"} >
+        <Grid maxWidth={"inherit"} container justifyContent={"center"} gap={"16px"}  minHeight={"250px"}  spacing={4} >
             {
                 loadingState ? <> 
                     <SkeletonLoader/>
@@ -32,7 +31,6 @@ const FeaturedProductsList = () => {
                     : <Error/>
             }
         </Grid>
-    </Container>
   )
 }
 

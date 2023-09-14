@@ -87,7 +87,7 @@ const AuthScreen = () => {
         <Input 
           value={phone}
           placeholder='phone'
-          sx={{minWidth: "230px"}}
+          sx={{mb: "16px",minWidth: "230px"}}
         />
         <Button sx={{color: "black", border: "1px solid black", "&:hover": {bgcolor: "black", color: "white"}}}>sign-up</Button>
 

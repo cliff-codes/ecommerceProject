@@ -1,8 +1,11 @@
 import React from 'react'
-import { Box, Button, Card, CardMedia, Grid, Typography } from '@mui/material'
+import { Box, useTheme, useMediaQuery, Card, CardMedia, Grid, Typography } from '@mui/material'
 import { Link } from 'react-router-dom'
 
 const ItemCard = ({item}) => {
+    const theme = useTheme()
+    const isSmallScreen = useMediaQuery(theme.breakpoints.up('sm'))
+    const fontSize = isSmallScreen ? "16px" : "14px"
 
     const {id, image, price, title, description} = item
     const formatedText = (name,len) => {
@@ -12,11 +15,11 @@ const ItemCard = ({item}) => {
         return name
     }
   return (
-    <Grid item justifyContent={"center"} alignItems={'center'} key={id} sm = {6} md = {4} spacing={2} overflow={'hidden'} boxSizing={'border-box'} padding={0} minHeight={"220px"} minWidth={"140px"} height={'auto'} width={'auto'}>
+    <Grid item justifyContent={"center"} alignItems={'center'} key={id} xs = {6} sm = {4} md = {3} boxSizing={'border-box'} padding={"8px"} >
         <Link style={{color: "inherit", textDecoration: "none"}} to={`/${id}`}>
             <Card  sx={{
-                height: "inherit",
-                width: "auto",
+                height: "100%",
+                width: "100%",
                 border: "none",
                 padding: "8px",
                 display:" flex",
@@ -32,10 +35,10 @@ const ItemCard = ({item}) => {
 
             <Box>                
                     <Box display={"flex"} alignItems={"center"} justifyContent={"space-between"}>
-                        <Typography paddingRight={"16px"} fontWeight={"600"} sx={{fontSize: {xs: "16px"} }} align='left'>{`${formatedText(title,11)}`}</Typography>
-                        <Typography fontWeight={"600"} align='right'>{`$${price}`}</Typography>
+                        <Typography paddingRight={"16px"} fontWeight={"600"} sx={{ fontSize }} align='left'>{`${formatedText(title,11)}`}</Typography>
+                        <Typography sx={{fontSize}} fontWeight={"600"} align='right'>{`$${price}`}</Typography>
                     </Box>
-                    <Typography textAlign={"left"}>{formatedText(description,18)}</Typography>
+                    <Typography sx={{fontSize}} textAlign={"left"}>{formatedText(description,18)}</Typography>
             </Box>
             </Card>
         </Link>
