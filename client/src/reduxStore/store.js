@@ -10,6 +10,7 @@ import { categoryApi } from "./features/categorySlice"
 import storage from "redux-persist/es/storage"
 import {persistReducer, persistStore} from "redux-persist"
 import thunk from "redux-thunk"
+import { authApi } from "./features/authSlice"
 
 const persistConfig = {
     key: "root",
@@ -24,7 +25,8 @@ const rootReducer = combineReducers({
     interestedProducts: interestedProductsReducer,
     cart: cartReducer,
     [api.reducerPath]: api.reducer,
-    [categoryApi.reducerPath]: categoryApi.reducer
+    [categoryApi.reducerPath]: categoryApi.reducer,
+    [authApi.reducerPath]: authApi.reducer
 })
 
 const persistedReducer = persistReducer(persistConfig,rootReducer)

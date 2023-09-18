@@ -4,12 +4,35 @@ import Logo from './Logo'
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import validator from 'validator'
+import {useRegisterCustomerMutation} from '../reduxStore/features/authSlice'
 
 const AuthScreen = () => {
   const [email, setEmail] = useState()
   const [phone, setPhone] = useState()
   const [password, setPassword] = useState()
   const [isValid, setIsValid] = useState(null)
+
+  const [registerCustomer] = useRegisterCustomerMutation()
+
+  const handleRegisterCustomer = async() => {
+    const newCustomer = {
+      data: {
+        email,
+        password
+      }
+    }
+
+    try {
+      const response = await registerCustomer(newCustomer)
+      if(response.error){
+        console.error("Error creating customer: ", response.error)
+      }else{
+        console.log("post created successfully: ", response.data)
+      }
+    } catch (error) {
+        console.log("Error creating post: ", error)
+    }
+  }
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
@@ -89,7 +112,13 @@ const AuthScreen = () => {
           placeholder='phone'
           sx={{mb: "16px",minWidth: "230px"}}
         />
-        <Button sx={{color: "black", border: "1px solid black", "&:hover": {bgcolor: "black", color: "white"}}}>sign-up</Button>
+        <Button sx={{color: "black", border: "1px solid black", "&:hover": {bgcolor: "black", color: "white"}}}
+        onClick={() => {
+          if(setIsValid(validator.isEmail(email)) && password){
+            handleRegisterCustomer()
+          }
+        }}
+        >sign-up</Button>
 
         <Button  
           sx={{

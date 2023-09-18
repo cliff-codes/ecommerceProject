@@ -1,7 +1,7 @@
 import { Box, Button, ButtonBase, Card, Container, Grid, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { itemsInCart, addToCart} from './cartSlice'
+import { itemsInCart, addToCart, findItemAndIncrease, findItemAndDecrease} from './cartSlice'
 
 
 const SingleProductDetails = ({item}) => {
@@ -9,15 +9,17 @@ const SingleProductDetails = ({item}) => {
     const {image, price, title, description, id} = item
 
     
-    const [counter,setCounter] = useState(0)
+    const [counter,setCounter] = useState(1)
 
     const increaseCounter = () => {
         setCounter(counter + 1)
+        dispatch(findItemAndIncrease(item.id))
     }
 
     const decreaseCounter = () => {
-        if(counter > 0){
+        if(counter > 1){
             setCounter(counter - 1)
+            findItemAndDecrease(item.id)
         }
     }
 
@@ -39,7 +41,6 @@ const SingleProductDetails = ({item}) => {
                                 }}} onClick={() => {
                                     if(counter > 0){
                                         dispatch(addToCart(id,title,price,counter,image))
-                                         setAddedToCart(true)
                                     }
             }}>Add to cart</Button>
         </>
@@ -67,7 +68,8 @@ const SingleProductDetails = ({item}) => {
 
                     <Typography textAlign={"left"} maxWidth={"300px"}>{description}</Typography>
 
-                    <Box display={"flex"} gap={"16px"} justifyContent={"center"} alignItems={"center"}>
+                    {
+                        cartItem.length > 0 ? <Box display={"flex"} gap={"16px"} justifyContent={"center"} alignItems={"center"}>
                         <Button variant='outlined' sx={{
                             border: "1px solid black",
                             color: "black",
@@ -78,7 +80,7 @@ const SingleProductDetails = ({item}) => {
                                 border: "none"
                             }
                         }} onClick={decreaseCounter}>-</Button>
-                        <Box>{counter}</Box>
+                        <Box>{item.quantity ? item.quantity : counter}</Box>
                         <Button variant='outlined' sx={{
                             border: "1px solid black",
                             color: "black",
@@ -90,7 +92,8 @@ const SingleProductDetails = ({item}) => {
                                 border: "none"
                             }
                         }} onClick={() => {increaseCounter()}}>+</Button>
-                    </Box>
+                    </Box>: null
+                    }
                     
                     <Box display={"flex"} paddingTop={"16px"} paddingBottom={"16px"}  justifyContent={"center"}>
                             {

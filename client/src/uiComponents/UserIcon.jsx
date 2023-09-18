@@ -28,6 +28,7 @@ const style = {
 };
 
 
+
 const UserIcon = () => {
   const cartItems = useSelector(itemsInCart)
   const [openPortal, setOpenPortal] = useState(false)

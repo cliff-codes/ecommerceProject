@@ -25,15 +25,14 @@ const cartSlice = createSlice({
         // },
         findItemAndIncrease: (state, action) => {
             const idToFind = action.payload; // Assuming action.payload is the ID to find
-            const item = state.items.find(el => el.cartId === idToFind);
+            const item = state.items.find(el => el.id === idToFind);
             if (item) {
-                // If item exists, you can update its properties
                 item.quantity += 1;
             }
         },
         findItemAndDecrease: (state, action) => {
             const idToFind = action.payload; // Assuming action.payload is the ID to find
-            const item = state.items.find(el => el.cartId === idToFind)
+            const item = state.items.find(el => el.id === idToFind)
             if (item) {
                 // If item exists, you can update its properties
                 item.quantity -= 1;
