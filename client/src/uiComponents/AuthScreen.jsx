@@ -4,36 +4,73 @@ import Logo from './Logo'
 import GoogleIcon from '@mui/icons-material/Google';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import validator from 'validator'
-import {useRegisterCustomerMutation} from '../reduxStore/features/authSlice'
+import axios from 'axios';
+
+// import {useRegisterCustomerMutation} from '../reduxStore/features/authSlice'
 
 const AuthScreen = () => {
-  const [email, setEmail] = useState()
-  const [phone, setPhone] = useState()
-  const [password, setPassword] = useState()
+  const [email, setEmail] = useState("")
+  const [phone, setPhone] = useState("")
+  const [password, setPassword] = useState("")
   const [isValid, setIsValid] = useState(null)
 
-  const [registerCustomer] = useRegisterCustomerMutation()
-
-  const handleRegisterCustomer = async() => {
-    const newCustomer = {
-      data: {
-        email,
-        password
-      }
-    }
-
+  const handleRegisterCustomer = async () => {
+    console.log('attempting to register user ...');
     try {
-      const response = await registerCustomer(newCustomer)
-      if(response.error){
-        console.error("Error creating customer: ", response.error)
-      }else{
-        console.log("post created successfully: ", response.data)
-      }
+      const response = await fetch(
+        `http://localhost:4000/marketplace/api/v1/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            password: password,
+          }),
+        }
+      );
+      console.log(response)
+      const data = await response.json();
+      localStorage.setItem("token", data.token);
+      window.location.reload();
+
+      // const response = await axios.post('http://localhost:4000/marketplace/api/v1/register', {
+      //   email: email,
+      //   password: password
+      // },{
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   }
+      // })
     } catch (error) {
-        console.log("Error creating post: ", error)
-    }
+      console.log('Sign up failed', error)
+    } 
   }
 
+  const handleCustomerLogin = async() => {
+    try {
+      const response = await axios.post('http://localhost:4000/marketplace/api/v1/login', {
+        email: email,
+        password: password
+      }, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      const {customerToken} = await response.data
+
+      if(customerToken){
+        localStorage.setItem("token", customerToken);
+        window.location.reload();
+      }
+    } catch (error) {
+      res.status(500).send('login uns')
+    }
+  }
+  
+  
+  
   const handleEmailChange = (e) => {
     setEmail(e.target.value)
     //checking if email is valid
@@ -67,6 +104,7 @@ const AuthScreen = () => {
         />
         <Button 
           sx={{color: "black", border: "1px solid black", "&:hover": {bgcolor: "black", color: "white"}}}
+          onClick={handleCustomerLogin}
           >Sign-In</Button>
         <Typography fontSize={'14px'} mt={'32px'}>sign-in by</Typography>
         <Box display={'flex'}>
@@ -84,7 +122,7 @@ const AuthScreen = () => {
     </>
   }  
 
-  
+
   //state of which screen should be displayed. login/sign up
   const [signUp, setSignUp] = useState(false)
   const mountSignUp = () => {
@@ -111,12 +149,12 @@ const AuthScreen = () => {
           value={phone}
           placeholder='phone'
           sx={{mb: "16px",minWidth: "230px"}}
+          onChange={handlePhoneChange}
         />
         <Button sx={{color: "black", border: "1px solid black", "&:hover": {bgcolor: "black", color: "white"}}}
         onClick={() => {
-          if(setIsValid(validator.isEmail(email)) && password){
+            console.log('clicked')
             handleRegisterCustomer()
-          }
         }}
         >sign-up</Button>
 

@@ -7,7 +7,7 @@ import { itemsInCart } from '../reduxStore/features/cartSlice';
 import { useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 import AuthScreen from './AuthScreen';
-
+// const [isLoggedIn, setIsLoggedIn] = useState(true)
 
 //portal styles
 const style = {
@@ -49,7 +49,10 @@ const UserIcon = () => {
       </Box>
 
       <Box display={"flex"} alignItems={"center"} justifyContent={"center"} height={"30px"} width={"30px"} borderRadius={"50%"} sx={{"&:hover": {background: "#D7D7D7"}}}>
-        <AccountCircleOutlinedIcon onClick = {() => setOpenPortal(true)}/>
+        <AccountCircleOutlinedIcon onClick = {() => {
+          setOpenPortal(true)
+        }
+        }/>
 
         <Modal
         open={openPortal}
