@@ -5,4 +5,5 @@ const {registerCustomer, loginCustomer} = require('../controllers/custormerContr
 Router.route('/register').post(registerCustomer)
 Router.route('/login').post(loginCustomer)
 
+
 module.exports = Router

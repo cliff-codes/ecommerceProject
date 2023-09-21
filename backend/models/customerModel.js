@@ -47,6 +47,6 @@ customerSchema.statics.findByCredentials = async (email,password) => {
     if(!isMatch) throw new Error("Email or password is incorrect")
     return customer
 }
-
+ 
 const Customer = mongoose.model("Customer", customerSchema)
 module.exports = Customer
