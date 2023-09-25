@@ -5,6 +5,7 @@ import interestedProductsReducer from "./features/interestedProductsSlice"
 import cartReducer from "./features/cartSlice"
 import { api } from "./features/shopNowSlice"
 import { categoryApi } from "./features/categorySlice"
+import searchReducer from "./features/searchSlice"
 
 
 import storage from "redux-persist/es/storage"
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
     singleProduct: singleProductReducer,
     interestedProducts: interestedProductsReducer,
     cart: cartReducer,
+    search: searchReducer,
     [api.reducerPath]: api.reducer,
     [categoryApi.reducerPath]: categoryApi.reducer,
     // [authApi.reducerPath]: authApi.reducer
