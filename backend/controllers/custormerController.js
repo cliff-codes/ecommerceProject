@@ -7,11 +7,15 @@ const registerCustomer = async(req,res) => {
         const saltRounds = 10
         const salt = await bcrypt.genSalt(saltRounds)
         const hashedPassword = await bcrypt.hash(password, salt)
-
         //new user
         const newCustomer = new Customer({email, password: hashedPassword})
-        const customerToken = newCustomer.generateAuthToken()
-        await newCustomer.save()
+        const customerToken = await newCustomer.generateAuthToken()
+
+        try {
+            await newCustomer.save()    
+        } catch (error) {
+            console.error(error)
+        } 
         res.status(201).send({newCustomer,customerToken})
     } catch (error) {
         res.status(501).json("could'nt create customer")

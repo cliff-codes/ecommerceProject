@@ -8,7 +8,8 @@ const productsRouter = require('./routes/productsRoute')
 const app = express();
 app.use(express.json())
 const corsOptions = {
-    origin: '*'
+    origin: 'http://localhost:5174',
+    methods: 'GET ,POST'
 }
 app.use(cors(corsOptions))
 

@@ -1,6 +1,5 @@
 const axios = require('axios')
 
-let allProducts = []
 const getAllProducts = async() => {
     try {
         const response = await axios.get('https://fakestoreapi.com/products')
@@ -17,7 +16,6 @@ const findSearchAndRelatedProducts = async (req, res) => {
     try {
         const products = await getAllProducts();
         const searchResults = await products.filter(product => product.title.includes(productName)? product : null);
-        
         res.status(200).send(searchResults);
     } catch (error) {
         res.status(500).send(`Error performing search: ${error.message}`);

@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState, useEffect} from 'react'
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined'
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
 import { Badge, Box, Modal, Typography } from '@mui/material'
@@ -7,6 +7,7 @@ import { itemsInCart } from '../reduxStore/features/cartSlice';
 import { useSelector } from 'react-redux';
 import CloseIcon from '@mui/icons-material/Close';
 import AuthScreen from './AuthScreen';
+import showcaseImg from "../assets/showcaseImg.jpg"
 // const [isLoggedIn, setIsLoggedIn] = useState(true)
 
 //portal styles
@@ -27,11 +28,25 @@ const style = {
   borderRadius: '8px'
 };
 
+const profileIcon = () => {
+  return <Box  height={"30px"} width={"30px"} bgcolor={"grey"} borderRadius={"50%"} sx={{
+    backgroundImage: `url(${showcaseImg})`,
+    backgroundPosition: "center",
+    backgroundSize: "contain"
+  }}>
+  </Box>
+}
 
 
 const UserIcon = () => {
   const cartItems = useSelector(itemsInCart)
   const [openPortal, setOpenPortal] = useState(false)
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    console.log(token)
+  },[])
+
   return (
     <div style={{
         display : "flex",
@@ -49,10 +64,10 @@ const UserIcon = () => {
       </Box>
 
       <Box display={"flex"} alignItems={"center"} justifyContent={"center"} height={"30px"} width={"30px"} borderRadius={"50%"} sx={{"&:hover": {background: "#D7D7D7"}}}>
-        <AccountCircleOutlinedIcon onClick = {() => {
+        {<AccountCircleOutlinedIcon onClick = {() => {
           setOpenPortal(true)
         }
-        }/>
+        }/> }
 
         <Modal
         open={openPortal}
